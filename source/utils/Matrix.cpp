@@ -1,10 +1,10 @@
 #include "../../headers/utils/Matrix.hpp"
 
-vec3 Matrix::mat4_t_vec3(mat4 m, vec3 v) {
+vec3 Matrix::mat4_t_vec3(const mat4 &m, const vec3 &v) {
     return {m*glm::vec4(v, 0.f)};
 }
 
-vec3 Matrix::mat4_t_point3(mat4 m, point3 v) {
+vec3 Matrix::mat4_t_point3(const mat4 &m, const vec3 &v) {
     return {m*glm::vec4(v, 1.f)};
 }
 

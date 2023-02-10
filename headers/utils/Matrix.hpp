@@ -7,8 +7,8 @@ namespace Matrix {
 
 using glm::mat4;
 
-vec3 mat4_t_vec3(mat4 m, vec3 v);
-vec3 mat4_t_point3(mat4 m, point3 v);
+vec3 mat4_t_vec3(const mat4 &m, const vec3 &v);
+vec3 mat4_t_point3(const mat4 &m, const point3 &v);
 
 mat4 rotation_x(float angle);
 mat4 rotation_y(float angle);
