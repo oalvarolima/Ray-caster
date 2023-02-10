@@ -36,7 +36,7 @@ bool Cone::get_closest_t(float x, const Ray &ray, hit_record &hr) {
     if ( bot_cover->intersect(ray, hr) && !pi_is_in_the_cone)
         return true;
 
-    if (x > hr.t_closest || x < EPS || !pi_is_in_the_cone)
+    if (x > hr.t || x < EPS || !pi_is_in_the_cone)
         return false;
 
     hr.set(x, pi, get_normal(pi), out_color, shininess, reflectivity, ka, kd, ke);

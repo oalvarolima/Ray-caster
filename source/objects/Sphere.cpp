@@ -14,14 +14,14 @@ bool Sphere::intersect(Ray ray, hit_record &hr) {
 
     float sqrtd_disc = fsqrt(discriminant);
     float x = (-b - sqrtd_disc);
-    if( x > EPS && x < hr.t_closest ) {
+    if( x > EPS && x < hr.t ) {
         point3 pi = ray.at(x);
         hr.set(x, pi, get_normal(pi), out_color, shininess, reflectivity, ka, kd, ke);
         return true;
     }
 
     x = (-b + sqrtd_disc);
-    if( x > EPS && x < hr.t_closest ) {
+    if( x > EPS && x < hr.t ) {
         point3 pi = ray.at(x);
         hr.set(x, pi, get_normal(pi), out_color, shininess, reflectivity, ka, kd, ke);
         return true;

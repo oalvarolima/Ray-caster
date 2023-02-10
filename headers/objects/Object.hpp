@@ -6,7 +6,7 @@
 using Matrix::mat4;
 
 struct hit_record {
-    float t_closest;
+    float t;
     point3 pi;
     vec3 obj_normal;
     color out_color;
@@ -14,10 +14,10 @@ struct hit_record {
     float reflectivity;
     vec3 ka, kd, ke;
 
-    hit_record() : t_closest(infinity) {}
+    hit_record() : t(infinity) {}
 
     void set(float a_t, point3 a_pi, vec3 a_obj_normal, color a_out_color, uint32_t a_shininess, float a_reflectivity, vec3 a_ka, vec3 a_kd, vec3 a_ke) {
-        t_closest = a_t;
+        t = a_t;
         pi = a_pi;
         obj_normal = a_obj_normal;
         out_color = a_out_color;

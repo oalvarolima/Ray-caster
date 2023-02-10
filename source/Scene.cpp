@@ -25,7 +25,7 @@ void Scene::draw_scene() {
             [this](const vector<uint32_t>& viewport_indexes) {
             color pixel_color;
             for (uint32_t i: viewport_indexes) {
-                pixel_color = viewport_color_at(i/img_height, i%img_height);
+                pixel_color = viewport_color_at(i/img_height, i%img_width);
                 uint32_t i_t_3 = i*3;
                 color_buffer[i_t_3] = clamp(pixel_color.r, 0.f, 255.f)/255.f;
                 color_buffer[++i_t_3] = clamp(pixel_color.g, 0.f, 255.f)/255.f;
@@ -54,7 +54,7 @@ color Scene::ray_color(Ray ray, uint32_t recursion_depth) {
         return {};
 
     hit_record hr = get_closest_obj(ray);
-    if( hr.t_closest == infinity )
+    if( hr.t == infinity )
         return bg_color;
 
     color point_color = color_of_intersection_point(ray, hr);
@@ -96,7 +96,7 @@ bool Scene::has_shadow_to(Light *l, point3 p) {
     float distance_to_light = glm::distance(p, l->center);
     vec3 direction_to_light = glm::normalize(l->center - p);
     hit_record obj = get_closest_obj(Ray(p, direction_to_light));
-    return obj.t_closest < distance_to_light;
+    return obj.t < distance_to_light;
 }
 
 void Scene::interaction_ray_object(Ray &intersection_ray, hit_record &hr, float &color_attenuation, uint32_t &recursion_depth) {

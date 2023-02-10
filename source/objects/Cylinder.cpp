@@ -42,7 +42,7 @@ bool Cylinder::get_closest_t(float x, const Ray &ray, hit_record &hr) {
         return true;
     }
 
-    if( x > hr.t_closest || x < EPS || !pi_is_in_the_cylinder )
+    if( x > hr.t || x < EPS || !pi_is_in_the_cylinder )
         return false;
 
     hr.set(x, pi, get_normal(pi), out_color, shininess, reflectivity, ka, kd, ke);

@@ -16,7 +16,7 @@ bool Face::intersect(Ray ray, hit_record &hr) {
 
     hit_record temp;
     face_plan->intersect(ray, temp);
-    if( temp.t_closest > hr.t_closest )
+    if( temp.t > hr.t )
         return false;
 
     point3 sub_p1_pi = p1 - temp.pi;
@@ -30,7 +30,7 @@ bool Face::intersect(Ray ray, hit_record &hr) {
     if( c3 < 0.f )
         return false;
 
-    hr.set(temp.t_closest, temp.pi, normal, out_color, shininess, reflectivity, ka, kd, ke);
+    hr.set(temp.t, temp.pi, normal, out_color, shininess, reflectivity, ka, kd, ke);
     return true;
 }
 

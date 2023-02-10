@@ -11,14 +11,14 @@ bool Plan::intersect(Ray ray, hit_record &hr) {
 
     if( has_radius() ) {
         point3 pi = ray.at(ti);
-        if (ti > hr.t_closest || !is_in_plan_radius(pi))
+        if (ti > hr.t || !is_in_plan_radius(pi))
             return false;
 
         hr.set(ti, pi, normal, out_color, shininess, reflectivity, ka, kd, ke);
         return true;
     }
 
-    if (ti < hr.t_closest) {
+    if (ti < hr.t) {
         point3 pi = ray.at(ti);
         hr.set(ti, pi, normal, out_color, shininess, reflectivity, ka, kd, ke);
         return true;
